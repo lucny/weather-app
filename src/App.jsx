@@ -1,4 +1,5 @@
 import SearchPanel from "./components/SearchPanel";
+import WeatherCard from "./components/WeatherCard";
 
 export default function App() {
   return (
@@ -6,6 +7,7 @@ export default function App() {
       <div className="mx-auto grid max-w-7xl gap-6 lg:grid-cols-[420px_1fr]">
         <section className="space-y-4">
            <SearchPanel />
+           <WeatherCard />
         </section>
 
         <section className="space-y-4">
