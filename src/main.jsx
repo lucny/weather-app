@@ -25,7 +25,7 @@ import App from './App.jsx'
 // 1. createRoot() - Vytvoří root element pro React rendering
 //    - Hledá HTML element s ID "root" v index.html
 //    - Vrací objekt s metodou render()
-creatRoot(document.getElementById('root')).render(
+createRoot(document.getElementById('root')).render(
   // 2. StrictMode - Wrapper komponenta pro vývojové kontroly
   //    - V produkci nemá žádný vliv
   //    - Pomáhá detekovat problémy během vývoje
