@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Deklarace HTML5 dokumentu -->
+    <meta charset="UTF-8" />
+    <!-- Ikona aplikace v tab prohlížeče -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <!-- Meta tag pro responsive design - zajišťuje správné zobrazení na mobilních zařízeních -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Název aplikace zobrazuje se v tab prohlížeče -->
+    <title>weather-app - Aplikace pro zobrazení počasí</title>
+  </head>
+  <body>
+    <!-- 
+      Hlavní kontejner div s ID "root"
+      React aplikace se zde renduje pomocí createRoot() a render() metodou
+      Všechen obsah React komponenty se vloží dovnitř tohoto divu
+    -->
+    <div id="root"></div>
+    <!-- 
+      Načtení main.jsx jako ES6 modul
+      Atribut "type=module" umožňuje použití import/export v prohlížeči
+      main.jsx je vstupní bod (entry point) React aplikace
+      Vite transformuje JSX na JavaScript na serveru
+    -->
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

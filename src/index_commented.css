@@ -1,0 +1,214 @@
+/* ============================================
+   INDEX.CSS - Globální CSS styly aplikace
+   ============================================
+   Tento soubor obsahuje:
+   - CSS proměnné (variables) pro celou aplikaci
+   - Responsive design pravidla
+   - Dark mode podpora
+   - Globální styly pro elementy
+*/
+
+/* ============================================
+   CSS PROMĚNNÉ (CUSTOM PROPERTIES)
+   ============================================
+   :root - Kořenový element
+   Definuje CSS proměnné dostupné všem prvkům
+   Přístup: var(--název-proměnné)
+   Výhody: Centralizovaná správa barev, fontů, stínů
+*/
+:root {
+  /* Textové barvy */
+  --text: #6b6375;        /* Normální text */
+  --text-h: #08060d;      /* Heading text - tmavší */
+  
+  /* Pozadí a hranice */
+  --bg: #fff;             /* Background - bílý v light mode */
+  --border: #e5e4e7;      /* Barva hranic */
+  
+  /* Code styling */
+  --code-bg: #f4f3ec;     /* Background pro inline code */
+  
+  /* Accent barva pro UI prvky */
+  --accent: #aa3bff;      /* Primární accent - fialová */
+  --accent-bg: rgba(170, 59, 255, 0.1);      /* Accent background - 10% opacita */
+  --accent-border: rgba(170, 59, 255, 0.5);  /* Accent border - 50% opacita */
+  
+  /* Sociální ikony */
+  --social-bg: rgba(244, 243, 236, 0.5);     /* Background z ikon */
+  
+  /* Stín pro elevaci prvků */
+  --shadow:
+    rgba(0, 0, 0, 0.1) 0 10px 15px -3px,
+    rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+
+  /* Font stack - jaké fonty použít v pořadí */
+  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;     /* Sans-serif font */
+  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;  /* Headings font */
+  --mono: ui-monospace, Consolas, monospace;             /* Monospace font - code */
+
+  /* Globální font styly */
+  font: 18px/145% var(--sans);        /* 18px velikost, 145% řádkování */
+  letter-spacing: 0.18px;             /* Mezera mezi písmenama */
+  color-scheme: light dark;           /* Povoluj light a dark mode */
+  color: var(--text);                 /* Výchozí textová barva */
+  background: var(--bg);              /* Výchozí background */
+  
+  /* Font rendering optimalizace */
+  font-synthesis: none;               /* Nesyntetizuj bold/italic */
+  text-rendering: optimizeLegibility; /* Lesší čitatelnost */
+  -webkit-font-smoothing: antialiased;        /* Antialiasing pro Webkit */
+  -moz-osx-font-smoothing: grayscale;         /* Antialiasing pro Firefox */
+
+  /* Responsive design - menší font na menších obrazovkách */
+  @media (max-width: 1024px) {
+    font-size: 16px;  /* Zmenší font na tabletech */
+  }
+}
+
+/* ============================================
+   DARK MODE - CSS proměnné pro tmavý režim
+   ============================================
+   @media (prefers-color-scheme: dark) - Aktivuje se když má uživatel nastaven dark mode
+   Přepíše hodnoty :root proměnných tmavými barvami
+*/
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Textové barvy - jasnější v dark mode */
+    --text: #9ca3af;                           /* Normální text - šedá */
+    --text-h: #f3f4f6;                         /* Heading - velmi světlý */
+    
+    /* Background - tmavý v dark mode */
+    --bg: #16171d;                             /* Tmavý background */
+    --border: #2e303a;                         /* Tmavá hranice */
+    
+    /* Code background */
+    --code-bg: #1f2028;                        /* Tmavý code background */
+    
+    /* Accent - jasnější fialová v dark mode */
+    --accent: #c084fc;                         /* Jasnější fialová */
+    --accent-bg: rgba(192, 132, 252, 0.15);    /* Accent background */
+    --accent-border: rgba(192, 132, 252, 0.5); /* Accent border */
+    
+    /* Sociální ikony v dark mode */
+    --social-bg: rgba(47, 48, 58, 0.5);        /* Tmavší background */
+    
+    /* Stín - silnější v dark mode */
+    --shadow:
+      rgba(0, 0, 0, 0.4) 0 10px 15px -3px,     /* Silnější vnitřní stín */
+      rgba(0, 0, 0, 0.25) 0 4px 6px -2px;      /* Silnější vnější stín */
+  }
+
+  /* Efekt na sociální ikony v dark mode - inverze barev */
+  #social .button-icon {
+    filter: invert(1) brightness(2);  /* Inverz + zvýšení jasu */
+  }
+}
+
+/* ============================================
+   BODY - Tělo HTML dokumentu
+   ============================================
+*/
+body {
+  margin: 0;  /* Odebereme browser default margin */
+}
+
+/* ============================================
+   ROOT - Hlavní container React aplikace
+   ============================================
+   ID "root" - sem se renderuje celá React aplikace
+*/
+#root {
+  width: 1126px;        /* Maximální šířka obsahu */
+  max-width: 100%;      /* Responsive - na menších obrazovkách 100% */
+  margin: 0 auto;       /* Centruj horizontálně */
+  text-align: center;   /* Centruj text */
+  border-inline: 1px solid var(--border);  /* Svislé hrany napravo a nalevo */
+  min-height: 100svh;   /* Minimálně výška viewportu (svh = small viewport height) */
+  
+  /* Flexbox pro layout */
+  display: flex;
+  flex-direction: column;  /* Prvky pod sebou */
+  box-sizing: border-box;  /* Include border v šířce */
+}
+
+/* ============================================
+   HEADING ELEMENTY - h1, h2
+   ============================================
+*/
+h1,
+h2 {
+  font-family: var(--heading);  /* Použij heading font */
+  font-weight: 500;             /* Medium váha */
+  color: var(--text-h);         /* Tmavší text pro headings */
+}
+
+/* H1 - Největší heading */
+h1 {
+  font-size: 56px;              /* Velký heading */
+  letter-spacing: -1.68px;      /* Negativní spacing - těsněji */
+  margin: 32px 0;               /* Vertikální spacing */
+  
+  /* Responsive - menší na menších obrazovkách */
+  @media (max-width: 1024px) {
+    font-size: 36px;
+    margin: 20px 0;
+  }
+}
+
+/* H2 - Menší heading */
+h2 {
+  font-size: 24px;
+  line-height: 118%;            /* Řádkování */
+  letter-spacing: -0.24px;      /* Negativní spacing */
+  margin: 0 0 8px;              /* Mezera pod heading */
+  
+  /* Responsive */
+  @media (max-width: 1024px) {
+    font-size: 20px;
+  }
+}
+
+/* ============================================
+   PARAGRAF - P elementy
+   ============================================
+*/
+p {
+  margin: 0;  /* Odebereme browser default margin */
+}
+
+/* ============================================
+   CODE styling
+   ============================================
+   code - inline code v textu
+   .counter - style pro counter tlačítko
+*/
+code,
+.counter {
+  font-family: var(--mono);           /* Monospace font pro code */
+  display: inline-flex;               /* Inline s flexbox alignment */
+  border-radius: 4px;                 /* Zaoblené rohy */
+  color: var(--text-h);               /* Tmavý text */
+}
+
+/* Inline code - v textu */
+code {
+  font-size: 15px;
+  line-height: 135%;
+  padding: 4px 8px;                   /* Padding uvnitř */
+  background: var(--code-bg);         /* Bílý/tmavý background */
+}
+
+/* ============================================
+   BUTTON COUNTER - Interactive Element
+   ============================================
+   Dalších stylů pro .counter se nacházejí v App.css
+*/
+/* .counter - viz App.css pro úplný styling */
+
+/* ============================================
+   RESPONSIVE BREAKPOINTS - Využívaní v projektu
+   ============================================
+   @media (max-width: 1024px) - tablet a menší
+   @media (max-width: 768px) - mobil
+   - Zajišťuje, že aplikace vypadá dobře na všech zařízeních
+*/
