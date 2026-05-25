@@ -22,7 +22,8 @@ export async function getCurrentWeather(latitude, longitude) {
     `https://api.open-meteo.com/v1/forecast` +
     `?latitude=${latitude}` +
     `&longitude=${longitude}` +
-    `&current=temperature_2m,relative_humidity_2m,wind_speed_10m,precipitation` +
+    `&current=weather_code,temperature_2m,relative_humidity_2m,wind_speed_10m,precipitation` +
+    `&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_sum` +
     `&timezone=auto`;
 
   const response = await fetch(url);

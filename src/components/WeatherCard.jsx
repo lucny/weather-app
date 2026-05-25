@@ -1,3 +1,5 @@
+import { getWeatherIcon } from "../utils/weatherCodes";
+
 export default function WeatherCard({
   city,
   country,
@@ -41,7 +43,7 @@ export default function WeatherCard({
           </div>
         </div>
 
-        <div className="text-7xl">🌤️</div>
+        <div className="text-7xl">{getWeatherIcon(current.weather_code)}</div>
       </div>
 
       <div className="mt-5 grid grid-cols-3 gap-3 border-t pt-4 text-sm">
