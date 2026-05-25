@@ -1,4 +1,7 @@
-export default function SearchPanel() {
+export default function SearchPanel({
+  city,
+  setCity,
+}) {
   return (
     <div className="rounded-2xl bg-white p-5 shadow">
       <div className="mb-4 flex items-center gap-2">
@@ -7,6 +10,8 @@ export default function SearchPanel() {
       </div>
 
       <input
+        value={city}
+        onChange={(e) => setCity(e.target.value)}
         className="w-full rounded-xl border border-slate-300 px-4 py-2"
         placeholder="Zadej město..."
       />

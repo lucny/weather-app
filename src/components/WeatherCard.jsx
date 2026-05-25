@@ -1,9 +1,11 @@
-export default function WeatherCard() {
+export default function WeatherCard({
+  city,
+}) {
   return (
     <div className="rounded-2xl bg-white p-5 shadow">
       <div className="flex items-start justify-between">
         <div>
-          <h2 className="text-lg font-bold">Praha, Česko</h2>
+          <h2 className="text-lg font-bold">{city}</h2>
           <p className="text-sm text-slate-500">
             Pondělí 20. května 2024, 14:00
           </p>
