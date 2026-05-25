@@ -1,5 +1,7 @@
 export default function WeatherCard({
-  city,
+  city,  
+  temperature,
+  description,
 }) {
   return (
     <div className="rounded-2xl bg-white p-5 shadow">
@@ -11,8 +13,8 @@ export default function WeatherCard({
           </p>
 
           <div className="mt-5 flex items-end gap-4">
-            <p className="text-6xl font-bold">22°C</p>
-            <p className="pb-2 text-slate-700">Polojasno</p>
+            <p className="text-6xl font-bold">{temperature} °C</p>
+            <p className="pb-2 text-slate-700">{description}</p>
           </div>
         </div>
 
