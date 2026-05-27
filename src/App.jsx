@@ -1,7 +1,7 @@
 import SearchPanel from "./components/SearchPanel";
 import WeatherCard from "./components/WeatherCard";
 import ForecastList from "./components/ForecastList";
-import MapPlaceholder from "./components/MapPlaceholder";
+import WeatherMap from "./components/WeatherMap";
 import ChartPlaceholder from "./components/ChartPlaceholder";
 import { useState } from "react";
 import { searchLocation, getCurrentWeather } from "./api/weatherApi";
@@ -75,7 +75,7 @@ export default function App() {
         </section>
 
         <section className="space-y-4">
-          <MapPlaceholder />
+          <WeatherMap location={location} />
           <ChartPlaceholder />
         </section>
       </div>
