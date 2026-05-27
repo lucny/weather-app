@@ -2,6 +2,7 @@ export default function SearchPanel({
   city,
   setCity,
   onSearch,
+  onUseMyLocation,
   loading,
 }) {
   function handleSubmit(event) {
@@ -37,6 +38,7 @@ export default function SearchPanel({
 
       <button
         type="button"
+        onClick={onUseMyLocation}
         className="mt-2 w-full rounded-xl border border-slate-300 px-4 py-2 text-slate-700"
       >
         Použít moji polohu

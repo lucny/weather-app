@@ -29,7 +29,7 @@ export default function App() {
 
       const weatherData = await getCurrentWeather(
         foundLocation.latitude,
-        foundLocation.longitude
+        foundLocation.longitude,
       );
 
       setLocation(foundLocation);
@@ -41,6 +41,39 @@ export default function App() {
     }
   }
 
+  function handleUseMyLocation() {
+    navigator.geolocation.getCurrentPosition(
+      async (position) => {
+        try {
+          setLoading(true);
+
+          const latitude = position.coords.latitude;
+
+          const longitude = position.coords.longitude;
+
+          const weatherData = await getCurrentWeather(latitude, longitude);
+
+          setLocation({
+            name: "Moje poloha",
+            latitude,
+            longitude,
+          });
+
+          setWeather(weatherData);
+
+          setError("");
+        } catch (err) {
+          setError("Nepodařilo se načíst počasí.");
+        } finally {
+          setLoading(false);
+        }
+      },
+
+      () => {
+        setError("Nepodařilo se získat polohu.");
+      },
+    );
+  }
 
   return (
     <main className="min-h-screen bg-slate-100 p-6">
@@ -50,6 +83,7 @@ export default function App() {
             city={city}
             setCity={setCity}
             onSearch={handleSearch}
+            onUseMyLocation={handleUseMyLocation}
             loading={loading}
           />
 
